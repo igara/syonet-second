@@ -60,13 +60,22 @@ yaorgu -S h2o
 ```
 
 - 証明書の作成  
-例）
+例）オレオレ  
 ```
 cd [syonet-second ディレクトリ]
 cd h2o/cert
 openssl genrsa -aes128 2048 > server.key
 openssl req -new -key server.key > server.csr
 openssl x509 -in server.csr -days 365000 -req -signkey server.key > server.crt
+```
+Let'encrypt  
+```
+git clone https://github.com/certbot/certbot
+cd certbot/
+### 証明書新規作成はこっち
+./certbot-auto
+### 証明書更新はこっち
+./certbot-auto renew --force-renew
 ```
 証明書の配置先の設定は  
 syonet-second/h2o/h2o.confを参照すること
