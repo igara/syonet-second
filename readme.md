@@ -23,13 +23,11 @@ meteor npm install
 ```
 meteor --production
 ```
-こちらはMongoDBのデバッグ表示が行われない
 
 - Server起動(開発)  
 ```
 meteor --debug
 ```
-こちらは「Control + M」でMongoDBのテーブルをデバッグ表示される  
 サーバサイドのデバッグを下記のURLから行える  
 http://localhost:3000/?debug=5959
 
