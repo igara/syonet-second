@@ -12,7 +12,6 @@ Meteor.startup(() => {
         {
             props: {
                 onUpdate() {
-                    console.log(routes);
                 },
             }
         },
@@ -21,6 +20,8 @@ Meteor.startup(() => {
             htmlHook(html) {
                 return html.replace("<head>", `<head>
 <title>syonet</title>
+<link rel="stylesheet" href="semantic-ui/semantic.min.css"></link>
+
 `);
             },
             preRender: function(req, res) {

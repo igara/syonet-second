@@ -1,15 +1,25 @@
-var webpack = require("webpack");
-var path = require("path");
-
-var env = process.env.NODE_ENV;
 var current_path = process.cwd();
 
+var path = require("path");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const extractCSS = new ExtractTextPlugin("semantic.min.css");
+
 var config = {
+    entry: [path.join(current_path, "private/webpack/css.build.js")],
+    output: {
+        path: path.join(current_path, "public/semantic-ui"),
+        filename: "bundle.js"
+    },
+    plugins: [
+
+        extractCSS
+    ],
     module: {
         loaders: [
             {
                 test: /\.css$/,
-                loaders: ["css-loader"]
+                loader: extractCSS.extract("css-loader")
             },
             {
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -20,26 +30,7 @@ var config = {
                 loader: "file-loader"
             }
         ]
-    },
-    entry: {
-        "css": path.join(current_path, "private/webpack/css.build.js"),
-    },
-    output: {
-        path: path.join(current_path, "imports/build/semantic-ui"),
-        filename: "[name].js"
-    },
-    plugins: [
-        new webpack.DefinePlugin({
-            "process.env.NODE_ENV": JSON.stringify(env)
-        }),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            // 変数を省略しない
-            mangle:false,
-            // ライセンスコメントは残す
-            output:{comments: require('uglify-save-license')}
-        })
-    ]
+    }
 };
 
 module.exports = config;
