@@ -1,3 +1,4 @@
+import React from "react";
 import routes from "../imports/routes.jsx";
 
 WebApp.connectHandlers.use(function (req, res, next) {
