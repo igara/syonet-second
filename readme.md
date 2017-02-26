@@ -19,6 +19,11 @@ cd syonet-second
 meteor npm install
 ```
 
+- Build
+```
+meteor npm run webpack
+```
+
 - Server起動(本番)  
 ```
 meteor --production

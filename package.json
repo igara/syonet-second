@@ -1,12 +1,12 @@
 {
   "name": "syonet-second",
   "author": "garasyo",
-  "version": "a",
   "private": true,
   "scripts": {
     "start": "meteor run",
     "lint": "eslint .",
-    "pretest": "npm run lint --silent"
+    "pretest": "npm run lint --silent",
+    "webpack": "./node_modules/.bin/webpack"
   },
   "dependencies": {
     "babel-runtime": "^6.18.0",
@@ -25,6 +25,7 @@
     "@types/react-dom": "^0.14.21",
     "@types/react-router": "^2.0.46",
     "babel-eslint": "^7.1.1",
+    "css-loader": "^0.26.2",
     "eslint": "^3.16.1",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-import-resolver-meteor": "^0.3.4",
@@ -32,6 +33,13 @@
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-meteor": "^4.0.1",
     "eslint-plugin-react": "^6.10.0",
-    "history": "^4.5.1"
+    "file-loader": "^0.10.1",
+    "history": "^4.5.1",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^6.0.2",
+    "style-loader": "^0.13.2",
+    "uglify-save-license": "^0.4.1",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.2.1"
   }
 }
