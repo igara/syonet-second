@@ -2,6 +2,8 @@ var webpack = require("webpack");
 var path = require("path");
 
 var env = process.env.NODE_ENV;
+var current_path = process.cwd();
+
 var config = {
     module: {
         loaders: [
@@ -20,10 +22,10 @@ var config = {
         ]
     },
     entry: {
-        "css": path.join(__dirname, "private/webpack/css.build.js"),
+        "css": path.join(current_path, "private/webpack/css.build.js"),
     },
     output: {
-        path: path.join(__dirname, "imports/build/semantic-ui"),
+        path: path.join(current_path, "imports/build/semantic-ui"),
         filename: "[name].js"
     },
     plugins: [
