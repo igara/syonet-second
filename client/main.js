@@ -7,4 +7,4 @@ ReactDOM.render(
   <Router history={browserHistory}>
     {routes}
   </Router>,
-document.getElementById("react-app"));
+document.querySelector("#react-app"));

@@ -1,18 +1,30 @@
 import React, {Component, PropTypes} from "react";
-import {Header, Icon, Button, Sidebar, Menu, Segment, Image} from "semantic-ui-react";
+import {Icon, Sidebar, Menu, Dimmer} from "semantic-ui-react";
+import body_style from "./body.css.js";
 
 export default class Body extends Component {
+
   /**
    * @param {any} props
    * @param {any} context
    */
   constructor(props, context) {
-    super(props);
-    this.state = {visible: false};
+    super(props, context);
+    this.state = {
+      visible: false,
+      dimmer: false
+    };
+    this.toggleVisibility = this.toggleVisibility.bind(this);
   }
 
+  /**
+   * Switch hide/appear Sidebar
+   */
   toggleVisibility() {
-    this.setState({ visible: !this.state.visible });
+    this.setState({
+      visible: !this.state.visible,
+      dimmer: !this.state.dimmer
+    });
   }
 
   /**
@@ -22,32 +34,35 @@ export default class Body extends Component {
   render() {
     return (
 <div>
-  <Button onClick={this.toggleVisibility}>Toggle Visibility</Button>
-  <Sidebar.Pushable as={Segment}>
-    <Sidebar as={Menu} animation="push" width="thin" visible={false} icon="labeled" vertical inverted>
-      <Menu.Item name="home">
-        <Icon name="home" />
-        Home
+  <Sidebar as={Menu} animation="push" width="thin" visible={this.state.visible} icon="labeled" vertical inverted>
+    <Menu.Item name="home">
+      <Icon name="home" />
+      Home
+    </Menu.Item>
+    <Menu.Item name="gamepad">
+      <Icon name="gamepad" />
+      Games
+    </Menu.Item>
+  </Sidebar>
+  <Sidebar.Pusher>
+    <Menu fixed="top">
+      <Menu.Item onClick={this.toggleVisibility}>
+        <Icon name="content" />
       </Menu.Item>
-      <Menu.Item name="gamepad">
-        <Icon name="gamepad" />
-        Games
+    </Menu>
+    <Dimmer.Dimmable dimmed={this.state.dimmer}>
+      <Dimmer active={this.state.dimmer} onClickOutside={this.toggleVisibility} />
+      <div style={body_style.body_content}>
+        {this.props.children}
+      </div>
+    </Dimmer.Dimmable>
+    <Menu fixed="bottom">
+      <Menu.Item onClick={this.toggleVisibility}>
+        <Icon name="content" />
       </Menu.Item>
-      <Menu.Item name="camera">
-        <Icon name="camera" />
-        Channels
-      </Menu.Item>
-    </Sidebar>
-    <Sidebar.Pusher>
-      <Segment basic>
-        <Header as="h3">Application Content</Header>
-        <Image src="http://semantic-ui.com/images/wireframe/paragraph.png" />
-      </Segment>
-    </Sidebar.Pusher>
-  </Sidebar.Pushable>
-  {this.props.children}
+    </Menu>
+  </Sidebar.Pusher>
 </div>
     );
   }
 }
-
