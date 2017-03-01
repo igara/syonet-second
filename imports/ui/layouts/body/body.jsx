@@ -69,7 +69,7 @@ export default class Body extends Component {
     </Menu.Item>
   </Sidebar>
   <Sidebar.Pusher>
-    <Menu fixed="top">
+    <Menu color="green" inverted fixed="top">
       <Menu.Item onClick={this.toggleVisibility}>
         <Icon name="content" />
       </Menu.Item>
@@ -80,7 +80,7 @@ export default class Body extends Component {
         {this.props.children}
       </div>
     </Dimmer.Dimmable>
-    <Menu fixed="bottom">
+    <Menu color="green" inverted fixed="bottom">
       <Menu.Item onClick={this.toggleVisibility}>
         <Icon name="content" />
       </Menu.Item>
