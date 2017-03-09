@@ -7,7 +7,8 @@ import NotFoundPage from "../imports/ui/pages/not_found/not_found_page.jsx";
 
 module.exports = (
     <Route path="/" component={Body}>
-        <IndexRoute component={HomePage}/>
-        <Route status="404" path="*" component={NotFoundPage} />
+        <IndexRoute component={HomePage} status={200} />
+        <Route path="home" component={HomePage} status={200} />
+        <Route path="*" component={NotFoundPage} status={404} />
     </Route>
 );
