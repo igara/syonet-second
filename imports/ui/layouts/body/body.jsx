@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from "react";
 import {Icon, Sidebar, Menu, Dimmer} from "semantic-ui-react";
 import body_style from "./body.css.js";
+import {Link } from "react-router";
 
 export default class Body extends Component {
 
@@ -59,14 +60,16 @@ export default class Body extends Component {
     return (
 <div>
   <Sidebar as={Menu} animation="push" width="thin" visible={this.state.visible} icon="labeled" vertical inverted>
-    <Menu.Item name="home">
-      <Icon name="home" />
-      Home
-    </Menu.Item>
-    <Menu.Item name="gamepad">
-      <Icon name="gamepad" />
-      Games
-    </Menu.Item>
+    <Link to='/'>
+      <Menu.Item name="home">
+        <Icon name="home" />Home
+      </Menu.Item>
+    </Link>
+    <Link to="/games">
+      <Menu.Item name="gamepad">
+        <Icon name="gamepad" />Games
+      </Menu.Item>
+    </Link>
   </Sidebar>
   <Sidebar.Pusher>
     <Menu color="green" inverted fixed="top">
