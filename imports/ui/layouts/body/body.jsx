@@ -70,6 +70,11 @@ export default class Body extends Component {
         <Icon name="gamepad" />Games
       </Menu.Item>
     </Link>
+    <Link to="/datas">
+      <Menu.Item name="datas">
+        <Icon name="student" />Datas
+      </Menu.Item>
+    </Link>
   </Sidebar>
   <Sidebar.Pusher>
     <Menu color="green" inverted fixed="top">
