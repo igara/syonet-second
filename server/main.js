@@ -23,8 +23,8 @@ Meteor.startup(() => {
                 return html.replace("<head>", `<head>
 <title>syonet</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<link rel="stylesheet" href="/semantic-ui/semantic.min.css"></link>
-
+<link rel="preload" href="/semantic-ui/semantic.min.css" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/semantic-ui/semantic.min.css"></noscript>
 `);
             },
             preRender: function(req, res) {
@@ -45,8 +45,6 @@ Meteor.startup(() => {
                         res.statusCode = 404;
                     }
                 });
-                
-
             }
         }
     );

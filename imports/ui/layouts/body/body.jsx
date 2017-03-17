@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from "react";
 import {Icon, Sidebar, Menu, Dimmer} from "semantic-ui-react";
 import body_style from "./body.css.js";
-import {Link } from "react-router";
+import {Link} from "react-router";
 
 export default class Body extends Component {
 
