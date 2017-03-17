@@ -25,6 +25,8 @@ Meteor.startup(() => {
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <link rel="preload" href="/semantic-ui/semantic.min.css" as="style" onload="this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="/semantic-ui/semantic.min.css"></noscript>
+<link rel="stylesheet" media="only screen and (max-device-width:480px)" href="/s
+emantic-ui/semantic.min.css">
 `);
             },
             preRender: function(req, res) {
