@@ -12,7 +12,6 @@ var config = {
         filename: "bundle.js"
     },
     plugins: [
-
         extractCSS
     ],
     module: {
@@ -23,11 +22,11 @@ var config = {
             },
             {
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "url-loader?limit=10000&mimetype=application/font-woff"
+                loader: "url-loader?limit=90000000000000000&mimetype=application/font-woff"
             },
             {
                 test: /\.(ttf|eot|svg|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "file-loader"
+                loader: "url-loader?limit=90000000000000000"
             }
         ]
     }

@@ -6,7 +6,7 @@
     "start": "meteor run",
     "lint": "eslint .",
     "pretest": "npm run lint --silent",
-    "webpack": "./node_modules/.bin/webpack --config private/webpack.config.js",
+    "webpack": "rm -rf public/semantic-ui | ./node_modules/.bin/webpack --config private/webpack.config.js",
     "topojson": "./node_modules/.bin/shp2json --encoding 'Shift-JIS' private/map/ne_10m_admin_1_states_provinces.shp | ./node_modules/.bin/geo2topo -q 1e6 > private/map/japan_map_topo.json"
   },
   "dependencies": {
