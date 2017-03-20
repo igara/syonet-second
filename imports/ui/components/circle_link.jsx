@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from "react";
 import * as d3 from "d3";
+import {Link} from "react-router";
 import DatasPageCircleLinkJson from "../../json/datas_page_circle_link_json.js";
 
 export default class CircleLink extends Component {
@@ -20,7 +21,11 @@ export default class CircleLink extends Component {
      */
     render() {
         return (
-<svg width="500" height="500"></svg>
+<svg className="circle_link_svg" width="500" height="500">
+    {this.json.map((object, index) => {
+        return <Link className={"circle_link_" + index} key={index} to={object[0].url} />;
+    })};
+</svg>
         );
     }
 
@@ -36,33 +41,22 @@ export default class CircleLink extends Component {
      * 円状のリンクを作成する
      */
     createCircleLink() {
-        /** 
-         * レンダリング終了してから<svg>のElementを取得する
-         * @var {string}
-         */
-        this.d3$svg = d3.select("svg");
-        // 円状
-        this.createCircleForCreateCircleLink();
-        // テキスト
-        this.createTextForCreateCircleLink();
+        this.json.map((object, index) => {
+            // 円状
+            this.createCircleForCreateCircleLink(index);
+            // テキスト
+            this.createTextForCreateCircleLink(index);
+        });
     }
 
     /**
      * 円形を生成する
      */
-    createCircleForCreateCircleLink() {
-        const circles = this.d3$svg.selectAll("circle")
-        .data(this.json)
+    createCircleForCreateCircleLink(index) {
+        const d3$svg = d3.select(".circle_link_" + index);
+        const circles = d3$svg.selectAll("circle")
+        .data(this.json[index])
         .enter()
-        .append("a")
-        /**
-         * リンク指定
-         * @param this.json[{number}] d
-         * @return {string} d.link_url // URL
-         */
-        .attr("xlink:href", (d) => {
-            return d.link_url;
-        })
         .append("circle");
 
         const circle_attributes = circles
@@ -103,19 +97,11 @@ export default class CircleLink extends Component {
     /**
      * テキスト文字を生成する
      */
-    createTextForCreateCircleLink() {
-        const text = this.d3$svg.selectAll("text")
-        .data(this.json)
+    createTextForCreateCircleLink(index) {
+        const d3$svg = d3.select(".circle_link_" + index);
+        const text = d3$svg.selectAll("text")
+        .data(this.json[index])
         .enter()
-        .append("a")
-        /**
-         * リンク指定
-         * @param this.json[{number}] d
-         * @return {string} d.link_url // URL
-         */
-        .attr("xlink:href", (d) => {
-            return d.link_url;
-        })
         .append("text");
     
         const text_attributes = text
