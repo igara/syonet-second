@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from "react";
+import CircleLink from "../../components/circle_link.jsx";
 
 export default class DatasPage extends Component {
   /**
@@ -15,7 +16,10 @@ export default class DatasPage extends Component {
    */
   render() {
     return (
-<div>Data一覧ページです</div>
+<div>
+  <div>Data一覧ページです</div>
+  <CircleLink />
+</div>
     );
   }
 }
