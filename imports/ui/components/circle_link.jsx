@@ -21,7 +21,7 @@ export default class CircleLink extends Component {
      */
     render() {
         return (
-<svg className="circle_link_svg" width="500" height="500">
+<svg className="circle_link_svg">
     {this.json.map((object, index) => {
         return <Link className={"circle_link_" + index} key={index} to={object[0].url} />;
     })};
@@ -34,6 +34,8 @@ export default class CircleLink extends Component {
      * @see {Component}
      */
     componentDidMount() {
+        this.setAdjustment();
+        this.setAddResizeEvent();
         this.createCircleLink();
     }
 
@@ -147,5 +149,37 @@ export default class CircleLink extends Component {
         .style("fill",(d) => {
             return "white";
         });
+    }
+
+    /**
+     * When Window Resize Event
+     */
+    setAddResizeEvent() {
+        window.onresize = () => {
+            this.setAdjustment();
+        };
+    }
+    setAdjustment() {
+        this.setAdjustmentHeight();
+        this.setAdjustmentWidth();
+    }
+
+    /**
+     * 横調整を行う
+     */
+    setAdjustmentWidth() {
+        const body_content_width = document.body.clientWidth;
+        const $svg_content = document.querySelector(".circle_link_svg");
+        // ヘッダーフッターの調整を行う
+        $svg_content.style.width = body_content_width + "px";
+    }
+    /**
+     * 高さ調整を行う
+     */
+    setAdjustmentHeight() {
+        const body_content_height = document.body.clientHeight - 80;
+        const $svg_content = document.querySelector(".circle_link_svg");
+        // ヘッダーフッターの調整を行う
+        $svg_content.style.height = body_content_height + "px";
     }
 }

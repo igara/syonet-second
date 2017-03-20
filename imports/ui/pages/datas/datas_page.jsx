@@ -17,7 +17,6 @@ export default class DatasPage extends Component {
   render() {
     return (
 <div>
-  <div>Data一覧ページです</div>
   <CircleLink />
 </div>
     );
