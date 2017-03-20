@@ -60,17 +60,17 @@ export default class Body extends Component {
     return (
 <div>
   <Sidebar as={Menu} animation="push" width="thin" visible={this.state.visible} icon="labeled" vertical inverted>
-    <Link to='/'>
+    <Link to="/" onClick={this.toggleVisibility}>
       <Menu.Item name="home">
         <Icon name="home" />Home
       </Menu.Item>
     </Link>
-    <Link to="/games">
+    <Link to="/games" onClick={this.toggleVisibility}>
       <Menu.Item name="gamepad">
         <Icon name="gamepad" />Games
       </Menu.Item>
     </Link>
-    <Link to="/datas">
+    <Link to="/datas" onClick={this.toggleVisibility}>
       <Menu.Item name="datas">
         <Icon name="student" />Datas
       </Menu.Item>
