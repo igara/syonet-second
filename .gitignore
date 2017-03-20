@@ -3,3 +3,4 @@ node_modules
 h2o/log
 h2o/cert
 public/semantic-ui
+.idea
