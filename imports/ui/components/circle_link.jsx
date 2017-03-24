@@ -21,11 +21,21 @@ export default class CircleLink extends Component {
      */
     render() {
         return (
-<svg className="circle_link_svg">
-    {this.json.map((object, index) => {
-        return <Link className={"circle_link_" + index} key={index} to={object[0].url} />;
-    })};
-</svg>
+<div>
+            {this.json.map((row, row_index) => {
+                return (
+    <div key={row_index}>
+                    {row.row.map((object, object_index) => {
+                        return (
+        <svg className="circle_link_svg" key={object_index}>
+            <Link className={"circle_link_" + ((row_index * 3) + object_index)} to={object[0].url} />
+        </svg>
+                        );
+                    })}
+    </div>
+                );
+            })}
+</div>
         );
     }
 
@@ -43,48 +53,65 @@ export default class CircleLink extends Component {
      * 円状のリンクを作成する
      */
     createCircleLink() {
-        this.json.map((object, index) => {
-            // 円状
-            this.createCircleForCreateCircleLink(index);
-            // テキスト
-            this.createTextForCreateCircleLink(index);
+        let index = 0;
+        this.json.map((row, row_index) => {
+            row.row.map((object, object_index) => {
+                const index = ((row_index * 3) + object_index);
+                // 円状
+                this.createCircleForCreateCircleLink(index, object);
+                // テキスト
+                this.createTextForCreateCircleLink(index, object);
+            });
         });
     }
 
     /**
      * 円形を生成する
+     * @param {number} index
+     * @param this.json[{number}] json
      */
-    createCircleForCreateCircleLink(index) {
+    createCircleForCreateCircleLink(index, json) {
         const d3$svg = d3.select(".circle_link_" + index);
         const circles = d3$svg.selectAll("circle")
-        .data(this.json[index])
+        .data(json)
         .enter()
         .append("circle");
+
+        const body_content_width = document.body.clientWidth;
+        const adjustment_size = body_content_width / 3 / 2;
 
         const circle_attributes = circles
         /**
          * X座標指定
          * @param this.json[{number}] d
-         * @return {number} d.x_axis // X座標
+         * @return {number} adjustment_size // X座標
          */
         .attr("cx",(d) => {
-            return d.x_axis;
+            return adjustment_size;
         })
         /**
          * Y座標指定
          * @param this.json[{number}] d
-         * @return {number} d.y_axis // Y座標
+         * @return {number} adjustment_size // Y座標
          */
         .attr("cy",(d) => {
-            return d.y_axis;
+            return adjustment_size;
         })
         /**
          * 円の大きさ指定
          * @param this.json[{number}] d
-         * @return {number} d.radius // 半径
+         * @return {number} adjustment_size // 半径
          */
         .attr("r",(d) => {
-            return d.radius;
+            return adjustment_size;
+        })
+        /**
+         * クラス指定
+         * @param this.json[{number}] d
+         * @return {string} // クラス名
+         */
+        .attr("class",(d) => {
+            return "d3_circles_link";
         })
         /**
          * 色指定
@@ -98,30 +125,43 @@ export default class CircleLink extends Component {
 
     /**
      * テキスト文字を生成する
+     * @param {number} index
+     * @param this.json[{number}] json
      */
-    createTextForCreateCircleLink(index) {
+    createTextForCreateCircleLink(index, json) {
         const d3$svg = d3.select(".circle_link_" + index);
         const text = d3$svg.selectAll("text")
-        .data(this.json[index])
+        .data(json)
         .enter()
         .append("text");
-    
+
+        const body_content_width = document.body.clientWidth;
+        const adjustment_size = body_content_width / 3 / 2;
+
         const text_attributes = text
         /**
          * X座標指定
          * @param this.json[{number}] d
-         * @return {number} d.x_axis // X座標
+         * @return {number} adjustment_size // X座標
          */
         .attr("x",(d) => {
-            return d.x_axis;
+            return adjustment_size;
         })
         /**
          * Y座標指定
          * @param this.json[{number}] d
-         * @return {number} d.y_axis // Y座標
+         * @return {number} adjustment_size // Y座標
          */
         .attr("y",(d) => {
-            return d.y_axis;
+            return adjustment_size;
+        })
+        /**
+         * クラス指定
+         * @param this.json[{number}] d
+         * @return {string} // クラス名
+         */
+        .attr("class",(d) => {
+            return "d3_circles_text";
         })
         /**
          * 表示文字列指定
@@ -159,27 +199,32 @@ export default class CircleLink extends Component {
             this.setAdjustment();
         };
     }
-    setAdjustment() {
-        this.setAdjustmentHeight();
-        this.setAdjustmentWidth();
-    }
 
     /**
-     * 横調整を行う
+     * 大きさ調整を行う
      */
-    setAdjustmentWidth() {
+    setAdjustment() {
         const body_content_width = document.body.clientWidth;
-        const $svg_content = document.querySelector(".circle_link_svg");
-        // ヘッダーフッターの調整を行う
-        $svg_content.style.width = body_content_width + "px";
-    }
-    /**
-     * 高さ調整を行う
-     */
-    setAdjustmentHeight() {
-        const body_content_height = document.body.clientHeight - 80;
-        const $svg_content = document.querySelector(".circle_link_svg");
-        // ヘッダーフッターの調整を行う
-        $svg_content.style.height = body_content_height + "px";
+        const svg_size = body_content_width / 3;
+        const circle_size = svg_size / 2;
+        const text_size = circle_size;
+
+        const $svg_content = document.querySelectorAll(".circle_link_svg");
+
+        $svg_content.forEach((element) => {
+            element.style.width = svg_size + "px";
+            element.style.height = svg_size + "px";
+        }, this);
+        const $circle = document.querySelectorAll(".d3_circles_link");
+        $circle.forEach((element) => {
+            element.setAttribute("cx", circle_size);
+            element.setAttribute("cy", circle_size);
+            element.setAttribute("r", circle_size);
+        }, this);
+        const $text = document.querySelectorAll(".d3_circles_text");
+        $text.forEach((element) => {
+            element.setAttribute("x", text_size);
+            element.setAttribute("y", text_size);
+        }, this);
     }
 }
