@@ -11,35 +11,35 @@ export default class DatasPageCircleLinkJson {
             {"row": [
                 [{
                     "circle_color": "green",
-                    "text": "農林水産省",
-                    "url": "/datas/norinsuisan/"
+                    "text": "e-stat",
+                    "url": "/datas/estat/"
                 }],
                 [{
                     "circle_color" : "purple",
-                    "text": "総務省",
-                    "url": "/datas/somu/"
+                    "text": "作成中",
+                    "url": "/datas/"
                 }],
                 [{
                     "circle_color" : "red",
-                    "text": "文部科学省",
-                    "url": "/datas/monbukagaku/"
+                    "text": "作成中",
+                    "url": "/datas/"
                 }]
             ]},
             {"row": [
                 [{
                     "circle_color": "orange",
-                    "text": "厚生労働省",
-                    "url": "/datas/koserodo/"
+                    "text": "作成中",
+                    "url": "/datas/"
                 }],
                 [{
                     "circle_color" : "blue",
-                    "text": "経済産業省",
-                    "url": "/datas/keizaisangyo/"
+                    "text": "作成中",
+                    "url": "/datas/"
                 }],
                 [{
                     "circle_color" : "brown",
-                    "text": "国土交通省",
-                    "url": "/datas/kokudokotsu/"
+                    "text": "作成中",
+                    "url": "/datas/"
                 }]
             ]}
         ];
