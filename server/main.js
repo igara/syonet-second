@@ -50,3 +50,5 @@ Meteor.startup(() => {
         }
     );
 });
+
+import "./rest/api.js";
