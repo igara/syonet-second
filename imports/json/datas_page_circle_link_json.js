@@ -6,42 +6,42 @@ export default class DatasPageCircleLinkJson {
      *  "url" string;            // URL
      * }[][]
      */
-    get json() {
-        return [
-            {"row": [
-                [{
-                    "circle_color": "green",
-                    "text": "e-stat",
-                    "url": "/datas/estat/"
-                }],
-                [{
-                    "circle_color" : "purple",
-                    "text": "作成中",
-                    "url": "/datas/"
-                }],
-                [{
-                    "circle_color" : "red",
-                    "text": "作成中",
-                    "url": "/datas/"
-                }]
-            ]},
-            {"row": [
-                [{
-                    "circle_color": "orange",
-                    "text": "作成中",
-                    "url": "/datas/"
-                }],
-                [{
-                    "circle_color" : "blue",
-                    "text": "作成中",
-                    "url": "/datas/"
-                }],
-                [{
-                    "circle_color" : "brown",
-                    "text": "作成中",
-                    "url": "/datas/"
-                }]
-            ]}
-        ];
-    }
+	get json() {
+		return [
+			{"row": [
+				[{
+					"circle_color": "green",
+					"text": "e-stat",
+					"url": "/datas/estat/"
+				}],
+				[{
+					"circle_color" : "purple",
+					"text": "作成中",
+					"url": "/datas/"
+				}],
+				[{
+					"circle_color" : "red",
+					"text": "作成中",
+					"url": "/datas/"
+				}]
+			]},
+			{"row": [
+				[{
+					"circle_color": "orange",
+					"text": "作成中",
+					"url": "/datas/"
+				}],
+				[{
+					"circle_color" : "blue",
+					"text": "作成中",
+					"url": "/datas/"
+				}],
+				[{
+					"circle_color" : "brown",
+					"text": "作成中",
+					"url": "/datas/"
+				}]
+			]}
+		];
+	}
 }

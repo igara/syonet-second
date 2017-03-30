@@ -7,6 +7,32 @@
         }
     },
     "rules": {
-        "semi": 2
-    }
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "indent": [
+            "error",
+            "tab"
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
+    },
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended",
+
+        "plugin:react/recommended"
+    ]
 }
