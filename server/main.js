@@ -1,3 +1,7 @@
+import {Meteor} from "meteor/meteor";
+import {WebApp} from "meteor/webapp";
+import {ReactRouterSSR} from "meteor/reactrouter:react-router-ssr";
+
 import {match} from "react-router";
 import {_} from "underscore";
 import routes from "../imports/routes.jsx";
