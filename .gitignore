@@ -5,3 +5,4 @@ h2o/cert
 public/semantic-ui
 .idea
 memo.txt
+imports/estat_api_setting.js

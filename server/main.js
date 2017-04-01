@@ -5,8 +5,23 @@ import {ReactRouterSSR} from "meteor/reactrouter:react-router-ssr";
 import {match} from "react-router";
 import {_} from "underscore";
 import routes from "../imports/routes.jsx";
+import CurlApi from "../imports/rest/curl_api.js";
+import Url from "url";
 
-WebApp.connectHandlers.use(function (req, res, next) {
+// e-statのデータを取得する
+WebApp.connectHandlers.use("/api/estat", (req, res, next) => {
+	// リクエストされたurlの情報をパース
+	const url_parse = Url.parse(req.url, true);
+	// リクエストパラメータを取得する
+	const query = url_parse.query;
+	if (query.statsCode) {
+		// statsCodeがある場合データ一覧表API
+		const curl_api = new CurlApi();
+		curl_api.setStatsListRoute(query.statsCode);
+	}
+});
+
+WebApp.connectHandlers.use((req, res, next) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
 	res.setHeader("Access-Control-Allow-Credentaial", true);
 	return next();
@@ -54,5 +69,3 @@ Meteor.startup(() => {
 		}
     );
 });
-
-import "./rest/api.js";

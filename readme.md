@@ -89,3 +89,13 @@ cd [syonet-second ディレクトリ]
 cd h2o
 h2o -c h2o.conf
 ```
+
+### REST APIの設定など
+
+#### e-statを使う場合
+
+``` imports/estat_api_setting.js
+module.exports = {
+	estat_app_id: "自分の登録したestatのappIdにすること"
+};
+```
