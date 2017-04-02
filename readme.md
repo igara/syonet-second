@@ -94,7 +94,9 @@ h2o -c h2o.conf
 
 #### e-statを使う場合
 
-``` imports/estat_api_setting.js
+imports/estat_api_setting.jsを新規で作成し下記を記載する
+
+```
 module.exports = {
 	estat_app_id: "自分の登録したestatのappIdにすること"
 };
