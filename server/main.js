@@ -19,6 +19,11 @@ WebApp.connectHandlers.use("/api/estat", (req, res, next) => {
 		const curl_api = new CurlApi();
 		curl_api.setStatsListRoute(query.statsCode);
 	}
+	if (query.statsDataId) {
+		// statsCodeがある場合データ一覧表API
+		const curl_api = new CurlApi();
+		curl_api.setStatsListRoute(query.statsDataId);
+	}
 });
 
 WebApp.connectHandlers.use((req, res, next) => {

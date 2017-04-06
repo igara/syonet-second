@@ -56,4 +56,44 @@ export default class CurlApi {
 			},
 		});
 	}
+
+	/**
+	 * e-statから政府統計コードによるデータ一覧表を取得する
+	 * @param {string} statsDataId 一覧取得から得たID
+	 */
+	setStatsDataRoute(statsDataId) {
+		// Maps to: /api/estat/
+		this.Api.addRoute("estat", { 
+			get: { 
+				authRequired: false,
+				action: () => {
+					try {
+						const result = HTTP.call("GET", "http://api.e-stat.go.jp/rest/2.1/app/json/getStatsData", {
+							params: {
+								"appId": setting.estat_app_id,
+								"statsDataId": statsDataId,
+								"limit": 1,
+							}
+						});
+						if (result.data) {
+							return result.data;
+						}
+						return { 
+							status: "sussess", 
+							data: { 
+								message: "Null Data", 
+							},
+						};
+					} catch (e) {
+						return { 
+							status: "error", 
+							data: { 
+								message: "Server Exception", 
+							},
+						}; 
+					}
+				}, 
+			},
+		});
+	}
 }
