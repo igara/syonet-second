@@ -72,7 +72,6 @@ export default class CurlApi {
 							params: {
 								"appId": setting.estat_app_id,
 								"statsDataId": statsDataId,
-								"limit": 1,
 							}
 						});
 						if (result.data) {

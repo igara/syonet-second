@@ -22,7 +22,7 @@ WebApp.connectHandlers.use("/api/estat", (req, res, next) => {
 	if (query.statsDataId) {
 		// statsCodeがある場合データ一覧表API
 		const curl_api = new CurlApi();
-		curl_api.setStatsListRoute(query.statsDataId);
+		curl_api.setStatsDataRoute(query.statsDataId);
 	}
 });
 
