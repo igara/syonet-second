@@ -101,3 +101,49 @@ module.exports = {
 	estat_app_id: "自分の登録したestatのappIdにすること"
 };
 ```
+
+### rustup & Emscripten のインストールと新しいプロジェクトの作成
+
+- rustup install & add WebAssembly  
+```
+curl https://sh.rustup.rs -sSf | sh
+rustup install stable
+sudo rustup target add asmjs-unknown-emscripten
+sudo rustup target add wasm32-unknown-emscripten
+```
+
+- cmake install
+```
+brew install cmake
+```
+
+- Emscripten install  
+```
+curl -O https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz
+tar -xzf emsdk-portable.tar.gz
+cd emsdk_portable
+source ./emsdk_env.sh
+emsdk update
+emsdk install latest
+emsdk activate latest
+emsdk install sdk-incoming-64bit binaryen-master-64bit
+emsdk activate sdk-incoming-64bit binaryen-master-64bit
+```
+
+- プロジェクトの作成  
+```
+cd [syonet-second]/private/asm
+cargo new --bin [プロジェクト名]
+```
+
+- WebAssemblyへのビルド  
+```
+cd [syonet-second]/imports/wasm/
+# プロジェクトビルド
+cargo build --target wasm32-unknown-emscripten
+# JSファイルの吐き出し
+rustc --target=wasm32-unknown-emscripten src/main.rs -o dist/main.js
+# HTMLも吐き出す
+rustc --target=wasm32-unknown-emscripten src/main.rs -o dist/main.html
+chmod a+r dist/main.js
+```

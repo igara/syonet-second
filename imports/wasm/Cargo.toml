@@ -1,0 +1,6 @@
+[package]
+name = "wasm"
+version = "0.1.0"
+authors = ["五十嵐翔 <igara1119@gmail.com>"]
+
+[dependencies]
