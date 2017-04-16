@@ -50,5 +50,8 @@
     "uglify-save-license": "^0.4.1",
     "url-loader": "^0.5.8",
     "webpack": "^2.2.1"
+  },
+  "optionalDependencies": {
+    "fsevents": "^1.1.1"
   }
 }
