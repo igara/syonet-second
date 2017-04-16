@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import TitleLogo from "../../components/title_logo.jsx";
+import THREE from "three";
 
-export default class HomePage extends Component {
+export default class TitleLogo extends Component {
 
 	/**
 	 * @param {any} props
@@ -9,6 +9,7 @@ export default class HomePage extends Component {
 	 */
 	constructor(props, context) {
 		super(props, context);
+
 	}
 
     /**
@@ -16,17 +17,20 @@ export default class HomePage extends Component {
      * @see {Component}
      */
 	componentDidMount() {
+		this.renderer = new THREE.WebGLRenderer();
+		// サイズの設定
+		this.renderer.setSize(200, 200);
+		var $element = document.querySelector("#title_logo");
+		$element.appendChild(this.renderer.domElement);
 	}
 
-	/**
+    /**
      * @return {JSX.Element}
      * @see {Component}
      */
 	render() {
 		return (
-<div>Homeページです
-	<TitleLogo />
-</div>
+<div id="title_logo"></div>
 		);
 	}
 }
