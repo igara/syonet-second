@@ -30,7 +30,6 @@
     "@types/react-router": "^2.0.46",
     "@types/three": "^0.84.3",
     "@types/underscore": "^1.7.36",
-    "ava": "^0.18.2",
     "babel-eslint": "^7.1.1",
     "css-loader": "^0.26.2",
     "eslint": "^3.16.1",
