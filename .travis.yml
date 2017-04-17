@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - 7
+cache:
+  directories:
+    - node_modules
+before_install:
+  - curl https://install.meteor.com/ | sh
+  - meteor npm install
+before_script:
+  - echo "module.exports = {estat_app_id:'XXXX'};" > imports/estat_api_setting.js
+  - meteor npm run webpack
+after_script:
+  - meteor npm run start
