@@ -1,5 +1,7 @@
 # Syonet-Sencond
 
+[![Build Status](https://travis-ci.org/igara/syonet-second.svg?branch=master)](https://travis-ci.org/igara/syonet-second)
+
 ## 環境構築
 
 ### Meteorのインストール  
