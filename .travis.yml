@@ -2,6 +2,10 @@ language: node_js
 node_js:
   - 7
 sudo: true
+notifications:
+  slack:
+    rooms:
+      - jointcrew:xocbQgxJ09DxLt5hPQ5m9zBS#bot
 cache:
   directories:
     - node_modules
