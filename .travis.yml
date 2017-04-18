@@ -12,4 +12,4 @@ before_script:
   - echo "module.exports = {estat_app_id:'XXXX'};" > imports/estat_api_setting.js
   - meteor npm run webpack
 after_script:
-  - meteor npm run start
+  # - meteor npm run start
