@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {Meteor} from "meteor/meteor";
 import {WebApp} from "meteor/webapp";
 import {ReactRouterSSR} from "meteor/reactrouter:react-router-ssr";

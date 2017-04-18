@@ -1,0 +1,3 @@
+imports/wasm/dist/*.js
+public/semantic-ui/*.js
+imports/estat_api_setting.js
