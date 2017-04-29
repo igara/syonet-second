@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "babel-runtime": "6.18.0",
+    "bcrypt": "1.0.2",
     "d3": "4.7.3",
     "history": "4.5.1",
     "meteor-node-stubs": "0.2.3",
@@ -61,9 +62,14 @@
     "webpack": "2.2.1"
   },
   "ava": {
+    "files": [
+      "./tests/**/*.test.js"
+    ],
     "require": [
-      "babel-register"
-    ]
+      "babel-register",
+      "./tests/helpers/setup_browser_env.js"
+    ],
+    "babel": "inherit"
   },
   "babel": {
     "presets": [
