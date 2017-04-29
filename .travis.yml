@@ -6,6 +6,16 @@ notifications:
   slack:
     rooms:
       - jointcrew:xocbQgxJ09DxLt5hPQ5m9zBS#bot
+addons:
+  code_climate:
+    repo_token: 762f4252a3c8e46230cad09c763b7c12ea8553b205560bac55acd822a506dc1b
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+env: - TRAVIS=travis CXX=g++-4.8
 cache:
   directories:
     - node_modules
