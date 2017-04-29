@@ -1,6 +1,10 @@
 # Syonet-Sencond
 
 [![Build Status](https://travis-ci.org/igara/syonet-second.svg?branch=master)](https://travis-ci.org/igara/syonet-second)
+  
+[![Code Climate](https://codeclimate.com/github/igara/syonet-second/badges/gpa.svg)](https://codeclimate.com/github/igara/syonet-second)
+[![Test Coverage](https://codeclimate.com/github/igara/syonet-second/badges/coverage.svg)](https://codeclimate.com/github/igara/syonet-second/coverage)
+[![Issue Count](https://codeclimate.com/github/igara/syonet-second/badges/issue_count.svg)](https://codeclimate.com/github/igara/syonet-second)
 
 ## 環境構築
 
